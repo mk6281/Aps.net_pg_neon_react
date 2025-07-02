@@ -11,7 +11,7 @@ function UpdateStudent() {
 
      // ✅ Load existing student info
   useEffect(() => {
-    axios.get(`http://localhost:8081/student/${id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/student/` +id)
       .then(res => {
         setName(res.data.Name);
         setEmail(res.data.Email);
@@ -22,7 +22,7 @@ function UpdateStudent() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        axios.put('http://localhost:8081/update/' + id, {name, email})
+        axios.put(`${process.env.REACT_APP_API_URL}/update/` +id, {name, email})
         .then(res => {
             console.log( res);
             navigate('/'); 

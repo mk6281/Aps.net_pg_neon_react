@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Student() {
     const [student, setStudent] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8081/')
+        axios.get(`${process.env.REACT_APP_API_URL}/`)
         .then(res => {
       console.log("Data from backend:", res.data);  // ADD THIS
       setStudent(res.data);})
@@ -14,7 +14,7 @@ function Student() {
 
     const handleDelete = (id) => {
         try {
-             axios.delete(`http://localhost:8081/student/` +id)
+             axios.delete(`${process.env.REACT_APP_API_URL}/student/` +id)
             .then(res => {
                 console.log("Delete response:", res.data);  // ADD THIS
                 setStudent(student.filter(item => item.ID !== id));

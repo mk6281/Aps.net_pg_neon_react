@@ -10,7 +10,7 @@ function CreateStudent() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        axios.post('http://localhost:8081/create', {name, email})
+        axios.post(`${process.env.REACT_APP_API_URL}/create`, { name, email })
         .then(res => {
             console.log( res);
             navigate('/'); 
